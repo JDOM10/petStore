@@ -3,7 +3,6 @@
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { NavbarActions } from "@/components/navbar-actions";
 import { useState } from "react";
 
 const Navbar = () => {
@@ -11,15 +10,16 @@ const Navbar = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <div className="border-b bg-gray-800 z-50 relative">
-      <div className="flex h-16 items-center px-4 justify-between">
-        <Image
-          src="/images/hbomax.jpg"
+    <div style={{ backgroundColor: 'rgb(85, 112, 180)' }} className="border-b z-50 relative">
+      <div className="flex h-20 items-center px-4 justify-between">
+        <img
+          src="https://img.icons8.com/ios_filled/512w/FFFFFF/dog-footprint.png"
           alt="HBO Max Logo"
-          height={40}
-          width={100}
+          height="40"
+          width="100"
           className="m-1 h-12 w-16"
         />
+
         <div className="flex items-center md:hidden">
           <button
             onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
@@ -45,45 +45,45 @@ const Navbar = () => {
         <ul
           className={`flex-grow md:flex md:items-center md:space-x-7 ${
             isMobileMenuOpen ? 'block' : 'hidden'
-          } md:block fixed md:relative left-0 md:left-auto top-16 md:top-auto bg-gray-800 md:bg-transparent w-full md:w-auto max-h-96 overflow-y-auto z-50`}
-          style={{ backgroundColor: isMobileMenuOpen ? 'rgba(0, 0, 0, 0.9)' : 'transparent' }}
+          } md:block fixed md:relative left-0 md:left-auto top-16 md:top-auto w-full md:w-auto max-h-96 overflow-y-auto z-50`}
         >
-          <li className="w-full md:w-auto">
+          <li className="w-full md:w-auto font-mochiy text-2xl">
             <Button
               onClick={() => router.push("/")}
-              className="text-md bg-gray-800 font-bold text-white hover:bg-gray-300 w-full md:w-auto text-center py-2"
+              className="text-md font-bold text-white w-full md:w-auto text-center py-2"
+              style={{ backgroundColor: 'rgb(85, 112, 180)', borderColor: 'transparent' }}
             >
               Inicio
             </Button>
           </li>
-          <li className="w-full md:w-auto">
+          <li className="w-full md:w-auto font-mochiy text-2xl">
             <Button
               onClick={() => router.push("/pets")}
-              className="text-md bg-gray-800 font-bold text-white hover:bg-gray-300 w-full md:w-auto text-center py-2"
+              className="text-md font-bold text-white w-full md:w-auto text-center py-2"
+              style={{ backgroundColor: 'rgb(85, 112, 180)', borderColor: 'transparent' }}
             >
               Mascotas
             </Button>
           </li>
-          <li className="w-full md:w-auto">
+          <li className="w-full md:w-auto font-mochiy text-2xl">
             <Button
               onClick={() => router.push("/orders")}
-              className="text-md bg-gray-800 font-bold text-white hover:bg-gray-300 w-full md:w-auto text-center py-2"
+              className="text-md font-bold text-white w-full md:w-auto text-center py-2"
+              style={{ backgroundColor: 'rgb(85, 112, 180)', borderColor: 'transparent' }}
             >
-              Ordenes
+              Órdenes
             </Button>
           </li>
-          <li className="w-full md:w-auto">
+          <li className="w-full md:w-auto font-mochiy text-2xl">
             <Button
               onClick={() => router.push("/store")}
-              className="text-md bg-gray-800 font-bold text-white hover:bg-gray-300 w-full md:w-auto text-center py-2"
+              className="text-md font-bold text-white w-full md:w-auto text-center py-2"
+              style={{ backgroundColor: 'rgb(85, 112, 180)', borderColor: 'transparent' }}
             >
               Tienda
             </Button>
           </li>
         </ul>
-        <div className="md:flex items-center">
-          <NavbarActions />
-        </div>
       </div>
     </div>
   );

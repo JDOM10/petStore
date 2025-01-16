@@ -1,38 +1,67 @@
-import Image from "next/image";
+"use client";
+
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
   return (
     <main className="container mx-auto mt-5 p-5">
-      <section className="bg-white p-5 rounded-lg shadow-md">
-        <h2 className="text-3xl font-bold mb-4">Sobre MAX</h2>
-        <p className="text-xl font-semibold underline mb-2">Misión</p>
-        <p className="mb-4">
-          En HBO Max, nuestra misión es ofrecer a nuestros suscriptores acceso a una incomparable biblioteca de
-          contenido premium, que incluye una amplia gama de películas, series originales galardonadas, documentales
-          impactantes y contenido para toda la familia. Nos esforzamos por proporcionar una experiencia de entretenimiento
-          única y envolvente que supere las expectativas de nuestros usuarios, promoviendo la diversidad, la creatividad y la innovación en cada aspecto de nuestra plataforma.
-        </p>
-        <p className="text-xl font-semibold underline mb-2">Visión</p>
-        <p className="mb-4">
-          Nuestra visión en HBO Max es convertirnos en el principal destino de entretenimiento en línea, donde los usuarios de todo el mundo puedan descubrir, explorar y
-          disfrutar de contenido excepcional en cualquier momento y en cualquier lugar. Nos comprometemos a ser líderes en la industria, ofreciendo constantemente nuevos
-          e innovadores servicios y experiencias que enriquezcan la vida de nuestros suscriptores y fortalezcan nuestra posición como referente en el mundo del entretenimiento
-          digital.
-        </p>
-        <h3 className="text-2xl font-bold mt-6">Conócenos un poco más</h3>
-      </section>
-
-      <section className="mt-10">
-        <div className="w-full flex justify-center">
-          <Image
-            src="/images/planes2.png"
-            alt="Mapa de la sede de HBO Max"
-            width={800}
-            height={600}
-            className="rounded-lg shadow-md"
+      <div className="flex">
+        {/* Imagen del perro */}
+        <div className="w-7/12  flex justify-start items-center">
+          <img
+            src="https://juandiegoosorio.neocities.org/images/perro1.jpg"
+            alt="Mascota"
+            className="rounded-lg w-3/4 h-auto"
           />
         </div>
-      </section>
+
+        {/* Texto y contenido */}
+        <div className="w-5/12 bg-white flex flex-col justify-center p-8 text-center md:text-left space-y-4">
+          {/* Encabezado principal */}
+          <h2 className="text-3xl font-bold" style={{ color: '#E54954' }}>
+            ¡Todo lo que necesitas para tus amigos peludos!
+          </h2>
+
+          {/* Texto descriptivo */}
+          <p className="text-lg text-gray-700">
+            Nos apasiona ofrecer todo lo que necesitas para consentir, cuidar y mimar
+            a tus compañeros peludos, emplumados o escamosos. Aquí encontrarás
+            alimentos premium, juguetes irresistibles, accesorios modernos y productos
+            de calidad para garantizar la felicidad y el bienestar de tu mascota.
+          </p>
+
+          {/* Frase destacada */}
+          <p className="text-lg font-semibold" style={{ color: '#E54954' }}>
+            ¡Ven a conocernos y descubre un mundo lleno de amor y diversión para tus
+            amigos animales!
+          </p>
+
+          {/* Beneficios destacados */}
+          <ul className="list-disc list-inside text-gray-700 text-base">
+            <li>Accesorios modernos y resistentes</li>
+            <li>Asesoría personalizada para tu mascota</li>
+            <li>Productos premium para su bienestar</li>
+          </ul>
+
+          {/* Llamado a la acción */}
+          <div className="mt-4">
+            <button
+              className="text-white font-bold py-2 px-4 rounded hover:opacity-90"
+              style={{ backgroundColor: '#E54954' }}
+              onClick={() => router.push("/store")}
+            >
+              Explora nuestros productos
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <h1 className="welcome-title">Bienvenido a Pets!</h1>
+      <img src="https://juandiegoosorio.neocities.org/images/perro2.jpg" alt="Mascotas info" />
+
+      <h1 className="welcome-title text-center">Conoce a tu nuevo amigo!</h1>
+      <img src="https://juandiegoosorio.neocities.org/images/perro3.jpg" alt="Mascotas info" />
     </main>
   );
 }

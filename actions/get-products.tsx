@@ -11,7 +11,10 @@ export const getProducts = async (): Promise<Pet[]> => {
   const transformedData: Pet[] = response.data.map((pet: any) => ({
     id: pet.id,
     name: pet.name,
-    category: pet.category.name, // Asegúrate de tomar el nombre
+    category: {
+      id: pet.category?.id || 0,
+      name: pet.category?.name || 'Sin categoría',
+    },
     photoUrl: pet.photoUrls[0] || '', // Usa la primera URL si está disponible
   }));
 

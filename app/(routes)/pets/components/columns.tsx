@@ -26,13 +26,19 @@ export const columns: ColumnDef<PetsColumn>[] = [
         className={`${
           row.original.status === "Disponible"
             ? "text-green-500"
+            : row.original.status === "Pendiente"
+            ? "text-yellow-500"
             : "text-red-500"
         }`}
       >
-        {row.original.status === "Disponible" ? "Disponible" : "No Disponible"}
+        {row.original.status === "Disponible"
+          ? "Disponible"
+          : row.original.status === "Pendiente"
+          ? "Pendiente"
+          : "vendido"}
       </span>
     ),
-  },
+  },  
   {
     accessorKey: "photoUrls",
     header: "Foto",

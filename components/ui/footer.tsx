@@ -1,32 +1,37 @@
-import Image from "next/image";
-
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white pt-4 pb-2">
+    <footer style={{ backgroundColor: '#5570B4' }} className="text-white pt-4 pb-2">
       <div className="container mx-auto px-4">
-        <div className="flex flex-wrap">
-          <div className="w-full lg:w-1/3 mb-3">
-            <Image
-              src="/images/hbomax.jpg"
-              alt="HBO Max Logo"
-              height={40}
-              width={100}
-              className="m-1 h-12 w-16"
+        <div className="flex flex-wrap justify-between items-center">
+          {/* Logo */}
+          <div className="w-full lg:w-1/3 mb-3 flex items-center">
+            <img
+              src="https://img.icons8.com/ios_filled/512w/FFFFFF/dog-footprint.png"
+              alt="Logo de Pets"
+              height={50}
+              width={50}
+              className="rounded-full"
             />
-            <div className="w-full lg:w-1/3 mb-3">
-              <h5 className="font-bold">Contáctanos</h5>
-              <p>Av. Massapequa 1165 NYC, USA</p>
-              <p>+1 888 987874523</p>
-              <p>contactanos@max.com</p>
-            </div>
+            <h5 className="ml-3 text-lg font-bold">Pets - Cuidando a tus amigos</h5>
           </div>
-          <p>
-            El texto está disponible bajo la Licencia Creative Commons
-            Atribución-CompartirIgual 4.0; pueden aplicarse cláusulas
-            adicionales. Al usar este sitio aceptas nuestros términos de uso y
-            nuestra política de privacidad. Max® es una marca registrada de la
-            Fundación JDOM, una organización con ánimo de lucro.
-          </p>
+
+          {/* Información de Contacto */}
+          <div className="w-full lg:w-1/3 mb-3 text-center">
+            <h5 className="font-bold text-lg">Contáctanos</h5>
+            <p>Av. Siempre Viva 123, Springfield</p>
+            <p>+1 800 555-1234</p>
+            <p>contacto@pets.com</p>
+          </div>
+
+          {/* Derechos y Términos */}
+          <div className="w-full lg:w-1/3 text-center lg:text-right text-sm">
+            <p>
+              © 2025 Pets. Todos los derechos reservados.
+            </p>
+            <p>
+              Al usar este sitio, aceptas nuestros <a href="#" className="underline">términos</a> y nuestra <a href="#" className="underline">política de privacidad</a>.
+            </p>
+          </div>
         </div>
       </div>
     </footer>

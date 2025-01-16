@@ -38,7 +38,8 @@ const formSchema = z.object({
     id: z.number().nonnegative(),
     name: z.string().min(1, { message: "Debe seleccionar una categoría." }),
   }),
-  photoUrls: z.optional(z.string())// photoUrls como array de cadenas
+  photoUrls: z.optional(z.string()),// photoUrls como array de cadenas
+  status: z.string().min(1, { message: "Debe seleccionar un estado." }), // Validación para el estado
 });
 
 type PetsFormValues = z.infer<typeof formSchema>;
@@ -110,10 +111,8 @@ export const PetsForm: React.FC = () => {
         name: data.name,
         category: { id: data.category.id, name: data.category.name },
         photoUrls: data.photoUrls ? [data.photoUrls] : [], // Convertir string a array
-        status: "Disponible", // Estado fijo
+        status: data.status,
       };
-
-      console.log("Payload enviado:", payload); // Debugging
 
       if (initialData) {
         await axios.put(`https://petstore.swagger.io/v2/pet`, payload);
@@ -179,19 +178,6 @@ export const PetsForm: React.FC = () => {
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <FormField
             control={form.control}
-            name="name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Nombre*</FormLabel>
-                <FormControl>
-                  <Input disabled={loading} placeholder="Nombre" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
             name="category"
             render={({ field }) => (
               <FormItem>
@@ -227,6 +213,19 @@ export const PetsForm: React.FC = () => {
           />
           <FormField
             control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Raza*</FormLabel>
+                <FormControl>
+                  <Input disabled={loading} placeholder="Ej: Golden Retriever" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
             name="photoUrls"
             render={({ field }) => (
               <FormItem>
@@ -242,6 +241,33 @@ export const PetsForm: React.FC = () => {
               </FormItem>
             )}
           />
+            <FormField
+    control={form.control}
+    name="status"
+    render={({ field }) => (
+      <FormItem>
+        <FormLabel>Estado*</FormLabel>
+        <FormControl>
+          <Select
+            disabled={loading}
+            value={field.value}
+            onValueChange={(value) => field.onChange(value)}
+          >
+            <SelectTrigger>
+              <SelectValue placeholder="Selecciona un estado" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="Disponible">Disponible</SelectItem>
+              <SelectItem value="Pendiente">Pendiente</SelectItem>
+              <SelectItem value="vendido">Vendido</SelectItem>
+            </SelectContent>
+          </Select>
+        </FormControl>
+        <FormMessage />
+      </FormItem>
+    )}
+  />
+
           <FormField
             control={form.control}
             name="id"

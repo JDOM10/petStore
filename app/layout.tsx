@@ -23,7 +23,7 @@ export default function RootLayout({
           <Navbar />
           <ToastProvider />
           <div>{children}</div>
-          <Footer/>
+          <Footer />
         </body>      
     </html>
   );

@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { useState } from "react"
+import { useState } from "react";
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -9,7 +9,7 @@ import {
   getFilteredRowModel,
   getPaginationRowModel,
   useReactTable,
-} from "@tanstack/react-table"
+} from "@tanstack/react-table";
 
 import {
   Table,
@@ -18,27 +18,20 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+} from "@/components/ui/table";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 interface DataTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[]
-  data: TData[],
-  searchKeys: string[];
+  columns: ColumnDef<TData, TValue>[];
+  data: TData[];
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
-  searchKeys,
 }: DataTableProps<TData, TValue>) {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
-  const [currentSearchKey, setCurrentSearchKey] = useState<string>(searchKeys[0]);
-
-  const searchKeyAliases: { [key: string]: string } = {
-    name: "Nombre",
-  };
 
   const table = useReactTable({
     data,
@@ -49,46 +42,23 @@ export function DataTable<TData, TValue>({
     getFilteredRowModel: getFilteredRowModel(),
     state: {
       columnFilters,
-    }
+    },
   });
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
-    table.getColumn(currentSearchKey)?.setFilterValue(value);
+    table.getColumn("name")?.setFilterValue(value); // Filtra únicamente por "name"
   };
 
-  const handleSearchKeyChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    table.getColumn(currentSearchKey)?.setFilterValue("");
-    const newSearchKey = event.target.value;
-    setCurrentSearchKey(newSearchKey);
-    table.getColumn(newSearchKey)?.setFilterValue("");
-  };
-  
   return (
     <div>
-      <div className="flex items-center py-4">
-        <label htmlFor="searchKey">Seleccionar Filtro:</label>
-        <select
-          id="searchKey"
-          name="searchKey"
-          onChange={handleSearchKeyChange}
-          value={currentSearchKey}
-        >
-          {searchKeys.map((key) => (
-            <option key={key} value={key}>
-              {searchKeyAliases[key]}
-            </option>
-          ))}
-        </select>
-      </div>
-      <div>
+      <div className="py-4">
         <Input
-          placeholder={`Buscar por ${searchKeyAliases[currentSearchKey]}`}
-          value={(table.getColumn(currentSearchKey)?.getFilterValue() as string) ?? ""}
+          placeholder="Buscar por nombre"
+          value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
           onChange={handleSearchChange}
-          className="max-w-sm"
+          className="max-w-40"
         />
-        <br></br>
       </div>
       <div className="rounded-md border">
         <Table>
@@ -105,7 +75,7 @@ export function DataTable<TData, TValue>({
                             header.getContext()
                           )}
                     </TableHead>
-                  )
+                  );
                 })}
               </TableRow>
             ))}
@@ -127,7 +97,7 @@ export function DataTable<TData, TValue>({
             ) : (
               <TableRow>
                 <TableCell colSpan={columns.length} className="h-24 text-center">
-                  No hay resultados.
+                  No hay mascotas en este estado.
                 </TableCell>
               </TableRow>
             )}
@@ -153,5 +123,5 @@ export function DataTable<TData, TValue>({
         </Button>
       </div>
     </div>
-  )
+  );
 }
