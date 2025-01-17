@@ -41,7 +41,7 @@ const OrderModal: React.FC<OrderModalProps> = ({ isOpen, onClose, pet }) => {
         status: "placed",
         complete: false,
       });
-      toast.success(`Orden realizada exitosamente. Número de orden: ${orderId}`);
+      toast.success(`Orden realizada! # de orden: ${orderId}`);
 
        // Actualizar el estado de la mascota a "vendido"
     await axios.put("https://petstore.swagger.io/v2/pet", {
@@ -59,8 +59,6 @@ const OrderModal: React.FC<OrderModalProps> = ({ isOpen, onClose, pet }) => {
       router.push(`/orders`);
     } catch (error) {
       toast.error("Hubo un problema al realizar la orden.");
-      console.error(error);
-      console.log("Pet", pet);
     }
   };
 

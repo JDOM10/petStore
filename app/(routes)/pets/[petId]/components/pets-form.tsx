@@ -174,126 +174,138 @@ export const PetsForm: React.FC = () => {
         )}
       </div>
       <Separator />
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <FormField
-            control={form.control}
-            name="category"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Categoría*</FormLabel>
-                <FormControl>
-                  <Select
-                    disabled={loading}
-                    value={field.value.name}
-                    onValueChange={(value) => {
-                      const selectedCategory = categories.find(
-                        (cat) => cat.name === value
-                      );
-                      if (selectedCategory) {
-                        field.onChange(selectedCategory);
-                      }
-                    }}
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Selecciona una categoría" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {categories.map((category) => (
-                        <SelectItem key={category.id} value={category.name}>
-                          {category.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Raza*</FormLabel>
-                <FormControl>
-                  <Input disabled={loading} placeholder="Ej: Golden Retriever" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="photoUrls"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>URL de Foto</FormLabel>
-                <FormControl>
-                  <Input
-                    disabled={loading}
-                    placeholder="URL de la foto"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+      <div className="flex">
+      <div className="flex-1 space-y-7">
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <FormField
-    control={form.control}
-    name="status"
-    render={({ field }) => (
-      <FormItem>
-        <FormLabel>Estado*</FormLabel>
-        <FormControl>
-          <Select
-            disabled={loading}
-            value={field.value}
-            onValueChange={(value) => field.onChange(value)}
-          >
-            <SelectTrigger>
-              <SelectValue placeholder="Selecciona un estado" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="Disponible">Disponible</SelectItem>
-              <SelectItem value="Pendiente">Pendiente</SelectItem>
-              <SelectItem value="vendido">Vendido</SelectItem>
-            </SelectContent>
-          </Select>
-        </FormControl>
-        <FormMessage />
-      </FormItem>
-    )}
-  />
+              control={form.control}
+              name="category"
+              render={({ field }) => (
+                <FormItem className="w-2/5">
+                  <FormLabel>Categoría*</FormLabel>
+                  <FormControl>
+                    <Select
+                      disabled={loading}
+                      value={field.value.name}
+                      onValueChange={(value) => {
+                        const selectedCategory = categories.find(
+                          (cat) => cat.name === value
+                        );
+                        if (selectedCategory) {
+                          field.onChange(selectedCategory);
+                        }
+                      }}
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="Selecciona una categoría" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {categories.map((category) => (
+                          <SelectItem key={category.id} value={category.name}>
+                            {category.name}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem className="w-2/5">
+                  <FormLabel>Raza*</FormLabel>
+                  <FormControl>
+                    <Input disabled={loading} placeholder="Ej: Golden Retriever" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="photoUrls"
+              render={({ field }) => (
+                <FormItem className="w-2/5">
+                  <FormLabel>URL de Foto</FormLabel>
+                  <FormControl>
+                    <Input
+                      disabled={loading}
+                      placeholder="URL de la foto"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="status"
+              render={({ field }) => (
+                <FormItem className="w-2/5">
+                  <FormLabel>Estado*</FormLabel>
+                  <FormControl>
+                    <Select
+                      disabled={loading}
+                      value={field.value}
+                      onValueChange={(value) => field.onChange(value)}
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="Selecciona un estado" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="Disponible">Disponible</SelectItem>
+                        <SelectItem value="Pendiente">Pendiente</SelectItem>
+                        <SelectItem value="vendido">Vendido</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-          <FormField
-            control={form.control}
-            name="id"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <Input
-                    type="hidden"
-                    disabled={loading || initialData}
-                    {...field}
-                  />
-                </FormControl>
-              </FormItem>
-            )}
-          />
-          <div className="flex justify-end space-x-4">
-            <Button type="submit" disabled={loading}>
-              {initialData ? "Guardar Cambios" : "Crear"}
-            </Button>
+            <FormField
+              control={form.control}
+              name="id"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input
+                      type="hidden"
+                      disabled={loading || initialData}
+                      {...field}
+                    />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+            <div className="flex justify-start space-x-4">
+              <Button type="submit" disabled={loading}>
+                {initialData ? "Guardar Cambios" : "Crear"}
+              </Button>
 
-            <Button type="button" variant="outline" disabled={loading} onClick={() => router.push(`/pets`)}>
-              Cancelar
-            </Button>
-          </div>
-        </form>
-      </Form>
+              <Button type="button" variant="outline" disabled={loading} onClick={() => router.push(`/pets`)}>
+                Cancelar
+              </Button>
+            </div>
+          </form>
+        </Form>
+      </div>
+      {/* Imagen */}
+      <div className="ml-6">
+        <img
+          src="https://juandiegoosorio.neocities.org/images/mas2.jpg"
+          alt="Mascota"
+          className="rounded-lg w-96 h-auto"
+        />
+      </div>
     </div>
+    </div >
   );
 };

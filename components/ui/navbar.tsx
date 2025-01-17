@@ -11,13 +11,14 @@ const Navbar = () => {
 
   return (
     <div style={{ backgroundColor: 'rgb(85, 112, 180)' }} className="border-b z-50 relative">
+  
       <div className="flex h-20 items-center px-4 justify-between">
         <img
-          src="https://img.icons8.com/ios_filled/512w/FFFFFF/dog-footprint.png"
+          src="https://juandiegoosorio.neocities.org/images/Huella%20home.png"
           alt="HBO Max Logo"
           height="40"
           width="100"
-          className="m-1 h-12 w-16"
+          className="m-1 h-12 w-14"
         />
 
         <div className="flex items-center md:hidden">
@@ -47,7 +48,7 @@ const Navbar = () => {
             isMobileMenuOpen ? 'block' : 'hidden'
           } md:block fixed md:relative left-0 md:left-auto top-16 md:top-auto w-full md:w-auto max-h-96 overflow-y-auto z-50`}
         >
-          <li className="w-full md:w-auto font-mochiy text-2xl">
+          <li className="w-full md:w-auto font-montserrat text-2xl ml-8">
             <Button
               onClick={() => router.push("/")}
               className="text-md font-bold text-white w-full md:w-auto text-center py-2"
@@ -56,7 +57,7 @@ const Navbar = () => {
               Inicio
             </Button>
           </li>
-          <li className="w-full md:w-auto font-mochiy text-2xl">
+          <li className="w-full md:w-auto font-montserrat text-2xl">
             <Button
               onClick={() => router.push("/pets")}
               className="text-md font-bold text-white w-full md:w-auto text-center py-2"
@@ -65,7 +66,7 @@ const Navbar = () => {
               Mascotas
             </Button>
           </li>
-          <li className="w-full md:w-auto font-mochiy text-2xl">
+          <li className="w-full md:w-auto font-montserrat text-2xl">
             <Button
               onClick={() => router.push("/orders")}
               className="text-md font-bold text-white w-full md:w-auto text-center py-2"
@@ -74,7 +75,7 @@ const Navbar = () => {
               Órdenes
             </Button>
           </li>
-          <li className="w-full md:w-auto font-mochiy text-2xl">
+          <li className="w-full md:w-auto font-montserrat text-2xl">
             <Button
               onClick={() => router.push("/store")}
               className="text-md font-bold text-white w-full md:w-auto text-center py-2"

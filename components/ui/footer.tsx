@@ -6,7 +6,7 @@ export default function Footer() {
           {/* Logo */}
           <div className="w-full lg:w-1/3 mb-3 flex items-center">
             <img
-              src="https://img.icons8.com/ios_filled/512w/FFFFFF/dog-footprint.png"
+              src="https://juandiegoosorio.neocities.org/images/Huella%20home.png"
               alt="Logo de Pets"
               height={50}
               width={50}

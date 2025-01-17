@@ -35,8 +35,15 @@ const PetsPage = () => {
   }
 
   return (
-    <div className="p-6">
-      <ProductList title="Mascotas Disponibles" items={pets} />
+    <div
+      className="p-8 bg-center"
+      style={{
+        backgroundImage: "url('https://juandiegoosorio.neocities.org/images/mas5.jpg')",
+      }}
+    >
+      <div className="bg-white bg-opacity-80 p-6 rounded-lg">
+        <ProductList title="Mascotas Disponibles" items={pets} />
+      </div>
     </div>
   );
 };

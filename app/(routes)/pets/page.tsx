@@ -30,7 +30,6 @@ const PetsPage = () => {
       setPets(response.data); // Guardar las mascotas en el estado
     } catch (err) {
       setError("Error al obtener las mascotas. Por favor, inténtalo de nuevo.");
-      console.error(err);
     } finally {
       setLoading(false); // Finalizar carga
     }
@@ -45,10 +44,19 @@ const PetsPage = () => {
     <div className="p-8">
       <div className="flex items-center justify-between">
         <Heading title={`Mascotas`} description="Administrar Mascotas" />
-        <Button onClick={() => router.push(`pets/0`)}>
+        <img 
+          src="https://juandiegoosorio.neocities.org/images/mas1.jpg" 
+          alt="Mascota" 
+          className="rounded-lg w-auto h-32 mx-auto"
+        />
+          <Button
+          onClick={() => router.push(`pets/0`)}
+          className="bg-[#F59BA5] text-black hover:bg-[#e08891] focus:ring-2 focus:ring-[#F59BA5] focus:outline-none"
+        >
           <Plus className="mr-2 h-4 w-4" />
           Añadir
         </Button>
+
       </div>
 
       {/* Selector de estado */}
